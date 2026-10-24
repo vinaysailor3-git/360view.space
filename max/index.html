@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>max</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="target-densitydpi=device-dpi, width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, minimal-ui" />
+<style> @-ms-viewport { width: device-width; } </style>
+<link id="siteFavicon" rel="icon">
+<link rel="stylesheet" href="vendor/reset.min.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="multiple-scenes view-control-buttons">
+
+<div id="pano"></div>
+<img id="siteLogo" class="site-logo" alt="Website logo" style="display:none">
+<button id="keyPlanButton" class="key-plan-button" type="button" style="display:none">
+  <img id="keyPlanThumb" alt="">
+  <span>KEY PLAN</span>
+</button>
+
+<div id="imagePreviewModal" class="image-preview-modal" role="dialog" aria-modal="true" aria-label="Image preview">
+  <button type="button" class="image-preview-close" aria-label="Close image preview">&times;</button>
+  <img id="imagePreview" alt="">
+</div>
+
+<button id="sceneListToggle" class="scene-picker-toggle" type="button" aria-expanded="false">
+  <span id="selectedSceneLabel"></span><span class="scene-picker-chevron">⌄</span>
+</button>
+<div id="sceneList">
+  <ul class="scenes">
+    
+      <a href="javascript:void(0)" class="scene" data-id="0-playroom_360_panorama">
+        <img class="scene-thumb" src="tiles/0-playroom_360_panorama/preview.jpg" alt="">
+        <li class="text">playroom_360_panorama</li>
+        <span class="scene-check">✓</span>
+      </a>
+    
+      <a href="javascript:void(0)" class="scene" data-id="1-classroom_360_panorama">
+        <img class="scene-thumb" src="tiles/1-classroom_360_panorama/preview.jpg" alt="">
+        <li class="text">classroom_360_panorama</li>
+        <span class="scene-check">✓</span>
+      </a>
+    
+      <a href="javascript:void(0)" class="scene" data-id="2-school_corridor_seam_test">
+        <img class="scene-thumb" src="tiles/2-school_corridor_seam_test/preview.jpg" alt="">
+        <li class="text">school_corridor_seam_test</li>
+        <span class="scene-check">✓</span>
+      </a>
+    
+  </ul>
+</div>
+
+<nav id="sceneStrip" class="scene-strip" aria-label="Panorama scenes">
+  
+    <a href="javascript:void(0)" class="scene-strip-item" data-id="0-playroom_360_panorama">
+      <img src="tiles/0-playroom_360_panorama/preview.jpg" alt="">
+      <span>playroom_360_panorama</span>
+    </a>
+  
+    <a href="javascript:void(0)" class="scene-strip-item" data-id="1-classroom_360_panorama">
+      <img src="tiles/1-classroom_360_panorama/preview.jpg" alt="">
+      <span>classroom_360_panorama</span>
+    </a>
+  
+    <a href="javascript:void(0)" class="scene-strip-item" data-id="2-school_corridor_seam_test">
+      <img src="tiles/2-school_corridor_seam_test/preview.jpg" alt="">
+      <span>school_corridor_seam_test</span>
+    </a>
+  
+</nav>
+
+<div id="titleBar">
+  <h1 class="sceneName"></h1>
+</div>
+
+<a href="javascript:void(0)" id="autorotateToggle">
+  <img class="icon off" src="img/play.png">
+  <img class="icon on" src="img/pause.png">
+</a>
+
+<a href="javascript:void(0)" id="fullscreenToggle">
+  <img class="icon off" src="img/fullscreen.png">
+  <img class="icon on" src="img/windowed.png">
+</a>
+
+<a href="javascript:void(0)" id="viewUp" class="viewControlButton viewControlButton-1">
+  <img class="icon" src="img/up.png">
+</a>
+<a href="javascript:void(0)" id="viewDown" class="viewControlButton viewControlButton-2">
+  <img class="icon" src="img/down.png">
+</a>
+<a href="javascript:void(0)" id="viewLeft" class="viewControlButton viewControlButton-3">
+  <img class="icon" src="img/left.png">
+</a>
+<a href="javascript:void(0)" id="viewRight" class="viewControlButton viewControlButton-4">
+  <img class="icon" src="img/right.png">
+</a>
+<a href="javascript:void(0)" id="viewIn" class="viewControlButton viewControlButton-5">
+  <img class="icon" src="img/plus.png">
+</a>
+<a href="javascript:void(0)" id="viewOut" class="viewControlButton viewControlButton-6">
+  <img class="icon" src="img/minus.png">
+</a>
+
+<script src="vendor/es5-shim.js"></script>
+<script src="vendor/eventShim.js"></script>
+<script src="vendor/classList.js"></script>
+<script src="vendor/requestAnimationFrame.js" ></script>
+<script src="vendor/screenfull.min.js" ></script>
+<script src="vendor/bowser.min.js" ></script>
+<script src="vendor/marzipano.js" ></script>
+
+<script src="data.js"></script>
+<script src="index.js"></script>
+<script>
+  (function() {
+    var modal = document.getElementById('imagePreviewModal');
+    modal.addEventListener('click', function(event) {
+      if (event.target === modal || event.target.classList.contains('image-preview-close')) {
+        modal.classList.remove('visible');
+        document.getElementById('imagePreview').src = '';
+      }
+    });
+    document.addEventListener('keydown', function(event) {
+      if (event.key === 'Escape') modal.classList.remove('visible');
+    });
+  })();
+</script>
+
+</body>
+</html>
