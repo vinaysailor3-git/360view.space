@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Beta School | Virtual Campus Tour</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="target-densitydpi=device-dpi, width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, minimal-ui" />
+<style> @-ms-viewport { width: device-width; } </style>
+<link id="siteFavicon" rel="icon">
+<link rel="stylesheet" href="vendor/reset.min.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="multiple-scenes ">
+
+<div id="pano"></div>
+<button id="schoolLogoButton" class="school-logo-button" type="button" aria-label="Open Beta School information" aria-haspopup="dialog">
+  <img id="siteLogo" class="site-logo" alt="Beta School logo" style="display:none">
+</button>
+<button id="keyPlanButton" class="key-plan-button" type="button" style="display:none">
+  <img id="keyPlanThumb" alt="">
+  <span>KEY PLAN</span>
+</button>
+<button id="galleryButton" class="gallery-button" type="button" aria-haspopup="dialog" aria-label="Open photo and video gallery">
+  <span aria-hidden="true">▦</span><span>Gallery</span>
+</button>
+
+<div id="imagePreviewModal" class="image-preview-modal" role="dialog" aria-modal="true" aria-label="Image preview">
+  <button type="button" class="image-preview-close" aria-label="Close image preview">&times;</button>
+  <img id="imagePreview" alt="">
+</div>
+
+<div id="galleryModal" class="gallery-modal" role="dialog" aria-modal="true" aria-labelledby="galleryTitle" aria-hidden="true">
+  <div class="gallery-card" role="document">
+    <div class="gallery-heading">
+      <div><p>Beta School</p><h2 id="galleryTitle">Photo &amp; Video Gallery</h2></div>
+      <button id="galleryClose" class="gallery-close" type="button" aria-label="Close gallery">&times;</button>
+    </div>
+    <div class="gallery-grid" id="galleryGrid"></div>
+    <p id="galleryEmpty" class="gallery-empty">Gallery photos and videos will appear here.</p>
+  </div>
+</div>
+
+<div id="schoolInfoModal" class="school-info-modal" role="dialog" aria-modal="true" aria-labelledby="schoolInfoTitle" aria-hidden="true">
+  <div class="school-info-card" role="document">
+    <button id="schoolInfoClose" class="school-info-close" type="button" aria-label="Close school information">&times;</button>
+    <header class="school-info-header">
+      <img id="schoolInfoLogo" alt="Beta School logo">
+      <div>
+        <p class="school-info-kicker">Welcome to</p>
+        <h2 id="schoolInfoTitle">Beta School</h2>
+        <p>Learn Today, Lead Tomorrow</p>
+      </div>
+    </header>
+    <div class="school-info-body">
+      <section>
+        <h3>About Beta School</h3>
+        <p>Beta School provides a safe, creative, and student-friendly environment where curious learners grow with confidence.</p>
+      </section>
+      <section>
+        <h3>Academics &amp; Admissions</h3>
+        <p>From early years through senior grades, our learning programme builds strong foundations for the future.</p>
+        <a class="school-info-link" href="mailto:admissions@betaschool.edu">Enquire for admission</a>
+      </section>
+      <section>
+        <h3>Campus Facilities</h3>
+        <ul>
+          <li>Smart classrooms</li><li>Science &amp; computer labs</li><li>Library &amp; sports areas</li><li>Safe school transport</li>
+        </ul>
+      </section>
+      <section class="school-info-contact">
+        <h3>Contact</h3>
+        <p><a href="mailto:info@betaschool.edu">info@betaschool.edu</a><br><a href="https://www.betaschool.edu" target="_blank" rel="noopener">www.betaschool.edu</a></p>
+      </section>
+    </div>
+  </div>
+</div>
+
+<button id="sceneListToggle" class="scene-picker-toggle" type="button" aria-expanded="false">
+  <span id="selectedSceneLabel"></span><span class="scene-picker-chevron">⌄</span>
+</button>
+<div id="sceneList">
+  <ul class="scenes">
+    
+      <a href="javascript:void(0)" class="scene" data-id="0-bright-hindi-yoga-classroom-panorama">
+        <img class="scene-thumb" src="tiles/0-bright-hindi-yoga-classroom-panorama/preview.jpg" alt="">
+        <li class="text">Bright Hindi Yoga Classroom Panorama</li>
+        <span class="scene-check">✓</span>
+      </a>
+    
+      <a href="javascript:void(0)" class="scene" data-id="1-bright-modern-computer-lab-panorama">
+        <img class="scene-thumb" src="tiles/1-bright-modern-computer-lab-panorama/preview.jpg" alt="">
+        <li class="text">Bright Modern Computer Lab Panorama</li>
+        <span class="scene-check">✓</span>
+      </a>
+    
+      <a href="javascript:void(0)" class="scene" data-id="2-empty-indian-school-assembly-pavilion">
+        <img class="scene-thumb" src="tiles/2-empty-indian-school-assembly-pavilion/preview.jpg" alt="">
+        <li class="text">Empty Indian School Assembly Pavilion</li>
+        <span class="scene-check">✓</span>
+      </a>
+    
+      <a href="javascript:void(0)" class="scene" data-id="3-immersive-indian-classroom-panorama">
+        <img class="scene-thumb" src="tiles/3-immersive-indian-classroom-panorama/preview.jpg" alt="">
+        <li class="text">Immersive Indian Classroom Panorama</li>
+        <span class="scene-check">✓</span>
+      </a>
+    
+      <a href="javascript:void(0)" class="scene" data-id="4-panoramic-hindi-school-science-laboratory">
+        <img class="scene-thumb" src="tiles/4-panoramic-hindi-school-science-laboratory/preview.jpg" alt="">
+        <li class="text">Panoramic Hindi School Science Laboratory</li>
+        <span class="scene-check">✓</span>
+      </a>
+    
+      <a href="javascript:void(0)" class="scene" data-id="5-panoramic-indian-school-playground">
+        <img class="scene-thumb" src="tiles/5-panoramic-indian-school-playground/preview.jpg" alt="">
+        <li class="text">Panoramic Indian School Playground</li>
+        <span class="scene-check">✓</span>
+      </a>
+    
+      <a href="javascript:void(0)" class="scene" data-id="6-panoramic-rural-indian-classroom">
+        <img class="scene-thumb" src="tiles/6-panoramic-rural-indian-classroom/preview.jpg" alt="">
+        <li class="text">Panoramic Rural Indian Classroom</li>
+        <span class="scene-check">✓</span>
+      </a>
+    
+      <a href="javascript:void(0)" class="scene" data-id="7-welcoming-rural-school-reception">
+        <img class="scene-thumb" src="tiles/7-welcoming-rural-school-reception/preview.jpg" alt="">
+        <li class="text">Welcoming Rural School Reception</li>
+        <span class="scene-check">✓</span>
+      </a>
+    
+  </ul>
+</div>
+
+<nav id="sceneStrip" class="scene-strip" aria-label="Panorama scenes">
+  
+    <a href="javascript:void(0)" class="scene-strip-item" data-id="0-bright-hindi-yoga-classroom-panorama">
+      <img src="tiles/0-bright-hindi-yoga-classroom-panorama/preview.jpg" alt="">
+      <span>Bright Hindi Yoga Classroom Panorama</span>
+    </a>
+  
+    <a href="javascript:void(0)" class="scene-strip-item" data-id="1-bright-modern-computer-lab-panorama">
+      <img src="tiles/1-bright-modern-computer-lab-panorama/preview.jpg" alt="">
+      <span>Bright Modern Computer Lab Panorama</span>
+    </a>
+  
+    <a href="javascript:void(0)" class="scene-strip-item" data-id="2-empty-indian-school-assembly-pavilion">
+      <img src="tiles/2-empty-indian-school-assembly-pavilion/preview.jpg" alt="">
+      <span>Empty Indian School Assembly Pavilion</span>
+    </a>
+  
+    <a href="javascript:void(0)" class="scene-strip-item" data-id="3-immersive-indian-classroom-panorama">
+      <img src="tiles/3-immersive-indian-classroom-panorama/preview.jpg" alt="">
+      <span>Immersive Indian Classroom Panorama</span>
+    </a>
+  
+    <a href="javascript:void(0)" class="scene-strip-item" data-id="4-panoramic-hindi-school-science-laboratory">
+      <img src="tiles/4-panoramic-hindi-school-science-laboratory/preview.jpg" alt="">
+      <span>Panoramic Hindi School Science Laboratory</span>
+    </a>
+  
+    <a href="javascript:void(0)" class="scene-strip-item" data-id="5-panoramic-indian-school-playground">
+      <img src="tiles/5-panoramic-indian-school-playground/preview.jpg" alt="">
+      <span>Panoramic Indian School Playground</span>
+    </a>
+  
+    <a href="javascript:void(0)" class="scene-strip-item" data-id="6-panoramic-rural-indian-classroom">
+      <img src="tiles/6-panoramic-rural-indian-classroom/preview.jpg" alt="">
+      <span>Panoramic Rural Indian Classroom</span>
+    </a>
+  
+    <a href="javascript:void(0)" class="scene-strip-item" data-id="7-welcoming-rural-school-reception">
+      <img src="tiles/7-welcoming-rural-school-reception/preview.jpg" alt="">
+      <span>Welcoming Rural School Reception</span>
+    </a>
+  
+</nav>
+
+<div id="titleBar">
+  <h1 class="sceneName"></h1>
+</div>
+
+<a href="javascript:void(0)" id="autorotateToggle">
+  <img class="icon off" src="img/play.png">
+  <img class="icon on" src="img/pause.png">
+</a>
+
+<a href="javascript:void(0)" id="fullscreenToggle">
+  <img class="icon off" src="img/fullscreen.png">
+  <img class="icon on" src="img/windowed.png">
+</a>
+
+<a href="javascript:void(0)" id="viewUp" class="viewControlButton viewControlButton-1">
+  <img class="icon" src="img/up.png">
+</a>
+<a href="javascript:void(0)" id="viewDown" class="viewControlButton viewControlButton-2">
+  <img class="icon" src="img/down.png">
+</a>
+<a href="javascript:void(0)" id="viewLeft" class="viewControlButton viewControlButton-3">
+  <img class="icon" src="img/left.png">
+</a>
+<a href="javascript:void(0)" id="viewRight" class="viewControlButton viewControlButton-4">
+  <img class="icon" src="img/right.png">
+</a>
+<a href="javascript:void(0)" id="viewIn" class="viewControlButton viewControlButton-5">
+  <img class="icon" src="img/plus.png">
+</a>
+<a href="javascript:void(0)" id="viewOut" class="viewControlButton viewControlButton-6">
+  <img class="icon" src="img/minus.png">
+</a>
+
+<script src="vendor/es5-shim.js"></script>
+<script src="vendor/eventShim.js"></script>
+<script src="vendor/classList.js"></script>
+<script src="vendor/requestAnimationFrame.js" ></script>
+<script src="vendor/screenfull.min.js" ></script>
+<script src="vendor/bowser.min.js" ></script>
+<script src="vendor/marzipano.js" ></script>
+
+<script src="data.js"></script>
+<script src="gallery-data.js"></script>
+<script src="index.js"></script>
+<script>
+  (function() {
+    var modal = document.getElementById('imagePreviewModal');
+    modal.addEventListener('click', function(event) {
+      if (event.target === modal || event.target.classList.contains('image-preview-close')) {
+        modal.classList.remove('visible');
+        document.getElementById('imagePreview').src = '';
+      }
+    });
+    document.addEventListener('keydown', function(event) {
+      if (event.key === 'Escape') modal.classList.remove('visible');
+    });
+  })();
+  (function() {
+    var button = document.getElementById('schoolLogoButton');
+    var modal = document.getElementById('schoolInfoModal');
+    var close = document.getElementById('schoolInfoClose');
+    document.getElementById('schoolInfoLogo').src = window.APP_DATA.settings.logo;
+    var lastFocused;
+    function openModal() {
+      lastFocused = document.activeElement;
+      modal.classList.add('visible');
+      modal.setAttribute('aria-hidden', 'false');
+      close.focus();
+    }
+    function closeModal() {
+      modal.classList.remove('visible');
+      modal.setAttribute('aria-hidden', 'true');
+      if (lastFocused) lastFocused.focus();
+    }
+    button.addEventListener('click', openModal);
+    close.addEventListener('click', closeModal);
+    modal.addEventListener('click', function(event) { if (event.target === modal) closeModal(); });
+    document.addEventListener('keydown', function(event) {
+      if (event.key === 'Escape' && modal.classList.contains('visible')) closeModal();
+    });
+  })();
+  (function() {
+    var button = document.getElementById('galleryButton');
+    var modal = document.getElementById('galleryModal');
+    var close = document.getElementById('galleryClose');
+    var lastFocused;
+    function openGallery() { lastFocused = document.activeElement; modal.classList.add('visible'); modal.setAttribute('aria-hidden', 'false'); close.focus(); }
+    function closeGallery() { modal.classList.remove('visible'); modal.setAttribute('aria-hidden', 'true'); if (lastFocused) lastFocused.focus(); }
+    button.addEventListener('click', openGallery);
+    close.addEventListener('click', closeGallery);
+    modal.addEventListener('click', function(event) { if (event.target === modal) closeGallery(); });
+    var galleryItems = window.BETA_GALLERY || [];
+    var grid = document.getElementById('galleryGrid');
+    var empty = document.getElementById('galleryEmpty');
+    galleryItems.forEach(function(item, index) {
+      var card = document.createElement(item.type === 'video' ? 'div' : 'button');
+      card.className = 'gallery-item gallery-item-' + (index % 4) + (item.type === 'video' ? ' gallery-video-item' : '');
+      if (item.type === 'video') {
+        card.innerHTML = '<video controls preload="metadata"' + (item.poster ? ' poster="' + item.poster + '"' : '') + '><source src="' + item.src + '"></video><span>' + item.title + '</span>';
+      } else {
+        card.type = 'button'; card.setAttribute('data-image', item.src); card.setAttribute('data-title', item.title);
+        card.innerHTML = '<img src="' + item.src + '" alt="' + item.title + '"><span>' + item.title + '</span>';
+      }
+      grid.appendChild(card);
+    });
+    empty.style.display = galleryItems.length ? 'none' : 'block';
+    grid.addEventListener('click', function(event) {
+      var item = event.target.closest('.gallery-item');
+      if (!item || !item.getAttribute('data-image')) return;
+      document.getElementById('imagePreview').src = item.getAttribute('data-image');
+      document.getElementById('imagePreview').alt = item.getAttribute('data-title');
+      document.getElementById('imagePreviewModal').classList.add('visible');
+    });
+    document.addEventListener('keydown', function(event) { if (event.key === 'Escape' && modal.classList.contains('visible')) closeGallery(); });
+  })();
+</script>
+
+</body>
+</html>
