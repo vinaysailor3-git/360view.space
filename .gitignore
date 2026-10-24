@@ -5,3 +5,6 @@ Thumbs.db
 # Local Cloudflare tooling
 .wrangler/
 .dev.vars*
+
+# Generated Cloudflare Workers deploy output
+dist/
